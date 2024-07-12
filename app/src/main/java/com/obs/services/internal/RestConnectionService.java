@@ -146,7 +146,7 @@ public class RestConnectionService {
         Request.Builder builder = new Request.Builder();
         builder.url(url);
         if (body == null) {
-            body = RequestBody.create("", null);
+            body = RequestBody.create(null, "");
         }
         switch (method) {
             case PUT:

@@ -266,7 +266,7 @@ public abstract class AbstractRequestConvertor extends RestStorageService {
         if (log.isTraceEnabled()) {
             log.trace("Entity Content:" + content);
         }
-        return RequestBody.create(content.getBytes(StandardCharsets.UTF_8), MediaType.parse(mimeType));
+        return RequestBody.create(MediaType.parse(mimeType), content.getBytes(StandardCharsets.UTF_8));
     }
 
     protected GetBucketFSStatusResult getOptionInfoResult(String bucketName, Response response) {

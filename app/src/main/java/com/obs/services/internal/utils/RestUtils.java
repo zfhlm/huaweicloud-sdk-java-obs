@@ -14,38 +14,6 @@
 
 package com.obs.services.internal.utils;
 
-import com.obs.log.ILogger;
-import com.obs.log.LoggerBuilder;
-import com.obs.services.exception.ObsException;
-import com.obs.services.internal.Constants;
-import com.obs.services.internal.Constants.CommonHeaders;
-import com.obs.services.internal.ObsConstraint;
-import com.obs.services.internal.ObsProperties;
-import com.obs.services.internal.ServiceException;
-import com.obs.services.internal.ext.ExtObsConstraint;
-import com.obs.services.model.HttpProtocolTypeEnum;
-import okhttp3.Authenticator;
-import okhttp3.ConnectionPool;
-import okhttp3.Credentials;
-import okhttp3.Dispatcher;
-import okhttp3.Dns;
-import okhttp3.OkHttpClient;
-import okhttp3.Protocol;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.Route;
-import org.jetbrains.annotations.NotNull;
-
-import javax.net.SocketFactory;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.KeyManager;
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
@@ -67,6 +35,39 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.net.SocketFactory;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.KeyManager;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+
+import com.obs.log.ILogger;
+import com.obs.log.LoggerBuilder;
+import com.obs.services.exception.ObsException;
+import com.obs.services.internal.Constants;
+import com.obs.services.internal.Constants.CommonHeaders;
+import com.obs.services.internal.ObsConstraint;
+import com.obs.services.internal.ObsProperties;
+import com.obs.services.internal.ServiceException;
+import com.obs.services.internal.ext.ExtObsConstraint;
+import com.obs.services.model.HttpProtocolTypeEnum;
+
+import okhttp3.Authenticator;
+import okhttp3.ConnectionPool;
+import okhttp3.Credentials;
+import okhttp3.Dispatcher;
+import okhttp3.Dns;
+import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.Route;
 
 public class RestUtils {
 
@@ -501,9 +502,8 @@ public class RestUtils {
          * @return
          * @throws UnknownHostException
          */
-        @NotNull
         @Override
-        public List<InetAddress> lookup(@NotNull String hostname) throws UnknownHostException {
+        public List<InetAddress> lookup(String hostname) throws UnknownHostException {
             List<InetAddress> adds = Dns.SYSTEM.lookup(hostname);
             log.info("internet host address:" + adds);
             return adds;
